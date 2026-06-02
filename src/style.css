@@ -1,0 +1,9 @@
+@import "tailwindcss";
+#colorwave {
+    background:
+  linear-gradient(315deg, #333d29 30%, #8a5e00 40%, #333d29 50%); 
+} 
+#colorswap {
+    background:
+   linear-gradient(45deg, #333d29 22%, #8a5e00 29%, #333d29 36%); 
+}
