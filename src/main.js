@@ -1,14 +1,16 @@
 import { Howl } from "howler"
 
-import soundEffect1 from './assets/kahoot.mp3'
+import soundEffect1 from './assets/sadsong.mp3'
 import soundEffect2 from './assets/wildcat.mp3'
 import soundEffect3 from './assets/lion.mp3'
 import soundEffect4 from './assets/meow.mp3'
+import soundEffect5 from './assets/Cat.mp3'
 
-const kahoot = new Howl({ 
+const sadsong = new Howl({ 
   src: [soundEffect1],
   autoplay: true,
   loop: true,
+  volume: 0.1,
 })
 
 const roar = new Howl({
@@ -16,14 +18,16 @@ const roar = new Howl({
   sprite: {
     roar1: [0, 2000],
     roar2: [2000, 4000],
-  }
+  },
+  volume: 1,
 })
 const lion = new Howl({
   src: [soundEffect3],
   sprite: {
     lion1: [0, 1000],
     lion2: [1000, 2000],
-  }
+  },
+  volume: 1,
 })
 
 const meow = new Howl({
@@ -31,7 +35,17 @@ const meow = new Howl({
   sprite: {
     meow1: [1000, 2000],
     meow2: [3000, 4000],
-  }
+  },
+  volume: 1,
+})
+
+const cat = new Howl({
+  src: [soundEffect5],
+  sprite: {
+    cat1: [0, 1000],
+    cat2: [1000, 2000],
+  },
+  volume: 1,
 })
 
 let score = 0 
@@ -47,7 +61,7 @@ function updateScore(amount) {
 }
 
 clicker.addEventListener("click", function() {
-  let clickAmt = 1 + (treats ** 1.5) + (toys ** 10.5)
+  let clickAmt = 1 + (treats ** 1.5) + (toys ** 4.5) + (gifts ** 6.5)
 
   meow.play("meow1")
 
@@ -81,6 +95,20 @@ let upgrade1 = document.getElementById("upgrade1")
   }
  })
 
+  let gifts = 0
+  let upgrade3 = document.getElementById("upgrade3")
+  upgrade3.addEventListener("click", function() {
+    cat.play("cat1")
+    if (score >= 1000) {
+      updateScore(-1000)
+      gifts ++
+      upgrade3.innerHTML = "Buy a gift (1000 points) You have " + gifts + " gifts"
+    } else {
+      alert("Not enough points")
+    }
+   })
+
+   
  function gameloop()  {
   let clickAmt = (treats ** 1.5) 
   updateScore(clickAmt)
