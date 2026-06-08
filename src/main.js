@@ -4,7 +4,7 @@ import soundEffect1 from './assets/sadsong.mp3'
 import soundEffect2 from './assets/wildcat.mp3'
 import soundEffect3 from './assets/lion.mp3'
 import soundEffect4 from './assets/meow.mp3'
-import soundEffect5 from './assets/Cat.mp3'
+import soundEffect5 from './assets/cat.mp3'
 
 const sadsong = new Howl({ 
   src: [soundEffect1],
@@ -108,7 +108,7 @@ let upgrade1 = document.getElementById("upgrade1")
     }
    })
 
-   
+
  function gameloop()  {
   let clickAmt = (treats ** 1.5) 
   updateScore(clickAmt)
