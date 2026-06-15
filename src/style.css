@@ -5,7 +5,7 @@
 } 
 #colorswap {
     background:
-   linear-gradient(45deg, #333d29 22%, #8a5e00 29%, #333d29 36%); 
+   linear-gradient(45deg, #333d29 16.8%, #8a5e00 22%, #333d29 27%); 
 }
 .thicker {
   height: 5px;
@@ -29,4 +29,14 @@
       rgba(251, 7, 217, 1) 90%,
       rgba(255, 0, 0, 1) 100%
   );
+}
+/* Add this to your CSS file */
+.btn-unaffordable {
+  background-color: red !important; /* Override existing styles */
+  color: white; /* Optional: change text color for contrast */
+}
+
+.btn-accessible {
+  background-color: green !important; /* Override existing styles */
+  color: white; /* Optional: change text color for contrast */
 }

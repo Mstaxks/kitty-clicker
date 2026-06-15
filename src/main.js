@@ -6,7 +6,7 @@ import soundEffect3 from './assets/lion.mp3'
 import soundEffect4 from './assets/meow.mp3'
 import soundEffect5 from './assets/cat.mp3'
 
-const sadsong = new Howl({ 
+const sadsong = new Howl({
   src: [soundEffect1],
   autoplay: true,
   loop: true,
@@ -48,7 +48,7 @@ const cat = new Howl({
   volume: 1,
 })
 
-let score = 0 
+let score = 0
 
 let clicker = document.getElementById("clicker")
 
@@ -60,57 +60,108 @@ function updateScore(amount) {
   scoreDisplay.innerHTML = score.toFixed(1) + " Cat points"
 }
 
-clicker.addEventListener("click", function() {
-  let clickAmt = 1 + (treats ** 1.5) + (toys ** 4.5) + (gifts ** 6.5)
+clicker.addEventListener("click", function () {
+  let clickAmt = 1 + (treats ** 1.5) + (toys ** 2.5) + (gifts ** 3.5)
 
   meow.play("meow1")
 
+  console.log("Click! Score increased by " + clickAmt)
+
   updateScore(clickAmt)
-})   
+})
+
 
 let treats = 0
 let upgrade1 = document.getElementById("upgrade1")
- upgrade1.addEventListener("click", function() {
-  roar.play("roar1")
+upgrade1.addEventListener("click", function () {
   if (score >= 10) {
-    updateScore(-10)
-    treats ++
-    upgrade1.innerHTML = "Buy a treat (10 points) You have " + treats + " treats"
+    roar.play("roar1");
+    updateScore(-10);
+    treats++;
+    upgrade1.innerHTML = "Buy a treat (10 points) You have " + treats + " treats";
+    upgrade1.classList.add("btn-accessible");
+    setTimeout(() => {
+      upgrade1.classList.remove("btn-accessible");
+    }, 300); // duration in ms
   } else {
-    alert("Not enough points")
+    // Not enough points: turn button red temporarily
+    upgrade1.classList.add("btn-unaffordable");
+    setTimeout(() => {
+      upgrade1.classList.remove("btn-unaffordable");
+    }, 300); // duration in ms
+    if (score >= 10) {
+      // ... your existing code ...
+    } else {
+      showPopup();
+    }
   }
- })
+});
 
-
- let toys = 0
- let upgrade2 = document.getElementById("upgrade2")
- upgrade2.addEventListener("click", function() {
+let toys = 0
+let upgrade2 = document.getElementById("upgrade2")
+upgrade2.addEventListener("click", function () {
   lion.play("lion1")
   if (score >= 100) {
     updateScore(-100)
-    toys ++
+    toys++
     upgrade2.innerHTML = "Buy a toy (100 points) You have " + toys + " toys"
+    upgrade2.classList.add("btn-accessible");
+    setTimeout(() => {
+      upgrade2.classList.remove("btn-accessible");
+    }, 300); // duration in ms
   } else {
-    alert("Not enough points")
+    // Not enough points: turn button red temporarily
+    upgrade2.classList.add("btn-unaffordable");
+    setTimeout(() => {
+      upgrade2.classList.remove("btn-unaffordable");
+    }, 250); // duration in ms
   }
- })
+  if (score >= 100) {
+    // ... your existing code ...
+  } else {
+    showPopup();
+  }
+})
 
-  let gifts = 0
-  let upgrade3 = document.getElementById("upgrade3")
-  upgrade3.addEventListener("click", function() {
-    cat.play("cat1")
-    if (score >= 1000) {
-      updateScore(-1000)
-      gifts ++
-      upgrade3.innerHTML = "Buy a gift (1000 points) You have " + gifts + " gifts"
-    } else {
-      alert("Not enough points")
-    }
-   })
+let gifts = 0
+let upgrade3 = document.getElementById("upgrade3")
+upgrade3.addEventListener("click", function () {
+  cat.play("cat1")
+  if (score >= 1000) {
+    updateScore(-1000)
+    gifts++
+    upgrade3.innerHTML = "Buy a gift (1000 points) You have " + gifts + " gifts"
+    upgrade3.classList.add("btn-accessible");
+    setTimeout(() => {
+      upgrade3.classList.remove("btn-accessible");
+    }, 300); // duration in ms
+  } else {
+    // Not enough points: turn button red temporarily
+    upgrade3.classList.add("btn-unaffordable");
+    setTimeout(() => {
+      upgrade3.classList.remove("btn-unaffordable");
+    }, 250); // duration in ms
+  }
+  if (score >= 1000) {
+    // ... your existing code ...
+  } else {
+    showPopup();
+  }
+})
 
 
- function gameloop()  {
-  let clickAmt = (treats ** 1.5) 
+function gameloop() {
+  let clickAmt = (treats ** 1.5)
   updateScore(clickAmt)
- }  
- setInterval(gameloop, 1000)
+}
+setInterval(gameloop, 1000)
+
+
+const popup = document.getElementById("popup-message");
+
+function showPopup() {
+  popup.classList.remove("hidden");
+  setTimeout(() => {
+    popup.classList.add("hidden");
+  }, 1500);
+}
