@@ -84,16 +84,12 @@ upgrade1.addEventListener("click", function () {
       upgrade1.classList.remove("btn-accessible");
     }, 300); // duration in ms
   } else {
+    showPopup();
     // Not enough points: turn button red temporarily
     upgrade1.classList.add("btn-unaffordable");
     setTimeout(() => {
       upgrade1.classList.remove("btn-unaffordable");
     }, 300); // duration in ms
-    if (score >= 10) {
-      // ... your existing code ...
-    } else {
-      showPopup();
-    }
   }
 });
 
@@ -110,17 +106,14 @@ upgrade2.addEventListener("click", function () {
       upgrade2.classList.remove("btn-accessible");
     }, 300); // duration in ms
   } else {
+    showPopup();
     // Not enough points: turn button red temporarily
     upgrade2.classList.add("btn-unaffordable");
     setTimeout(() => {
       upgrade2.classList.remove("btn-unaffordable");
     }, 250); // duration in ms
   }
-  if (score >= 100) {
-    // ... your existing code ...
-  } else {
-    showPopup();
-  }
+
 })
 
 let gifts = 0
@@ -137,15 +130,11 @@ upgrade3.addEventListener("click", function () {
     }, 300); // duration in ms
   } else {
     // Not enough points: turn button red temporarily
+    showPopup();
     upgrade3.classList.add("btn-unaffordable");
     setTimeout(() => {
       upgrade3.classList.remove("btn-unaffordable");
     }, 250); // duration in ms
-  }
-  if (score >= 1000) {
-    // ... your existing code ...
-  } else {
-    showPopup();
   }
 })
 
